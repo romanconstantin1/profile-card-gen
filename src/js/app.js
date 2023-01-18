@@ -29,22 +29,56 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  let fnText = "Nissa";
+  if (variables.name != null) fnText = variables.name;
+
+  let lnText = "Revane";
+  if (variables.lastname != null) lnText = variables.lastname;
+
   let smPosition = `<ul class="position-right">`;
   if (variables.socialMediaPosition == "position-left")
     smPosition = `<ul class="position-left">`;
 
+  let tLink =
+    "https://www.youtube.com/watch?v=5utArpwLqo8&ab_channel=ItaliaSquisita";
+  if (variables.twitter != null)
+    tLink = `https://twitter.com/${variables.twitter}`;
+
+  let ghLink =
+    "https://www.youtube.com/watch?v=bbVj4Cp-Wt0&ab_channel=ItaliaSquisita";
+  if (variables.github != null)
+    ghLink = `https://github.com/${variables.github}`;
+
+  let liLink =
+    "https://www.youtube.com/watch?v=bNSR5k9Fb5I&t=25s&ab_channel=ItaliaSquisita";
+  if (variables.linkedin != null)
+    liLink = `https://www.linkedin.com/in/${variables.linkedin}`;
+
+  let igLink =
+    "https://www.youtube.com/watch?v=dMIk_kzvoBM&ab_channel=ItaliaSquisita";
+  if (variables.instagram != null)
+    igLink = `http://instagram.com/${variables.instagram}`;
+
+  let roleSel = "";
+  if (variables.role != null) roleSel = variables.role;
+
+  let citySel = "";
+  if (variables.city != null) citySel = variables.city;
+
+  let countrySel = "";
+  if (variables.country != null) countrySel = variables.country;
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${fnText} ${lnText}</h1>
+          <h2>${roleSel}</h2>
+          <h3>${citySel}, ${countrySel}</h3>
+            ${smPosition}
+            <li><a href="${tLink}"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="${ghLink}"><i class="fab fa-github"></i></a></li>
+            <li><a href="${liLink}"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="${igLink}"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
@@ -65,7 +99,7 @@ window.onload = function() {
     socialMediaPosition: "position-left",
     // social media usernames
     twitter: null,
-    github: "alesanchezr",
+    github: null,
     linkedin: null,
     instagram: null,
     name: null,
